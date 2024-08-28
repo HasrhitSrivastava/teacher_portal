@@ -49,4 +49,9 @@ Make sure you have the following installed:
    ```bash
    git clone https://github.com/HasrhitSrivastava/teacher-portal.git
    cd teacher-portal
+   rails db:create db:migrate db:seed
+   run the rails server by using: rails -s
+   default credentials for teacher
+   email: teacher@gmail.com
+   password: Teacher@321
 

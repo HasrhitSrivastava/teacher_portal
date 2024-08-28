@@ -1,0 +1,59 @@
+<div class="container">
+  <h1>Student List</h1>
+  <table class="table table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Subject</th>
+        <th>Marks</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="student-list">
+      <% @students.each do |student| %>
+        <tr data-id="<%= student.id %>">
+          <td><%= student.name %></td>
+          <td><%= student.subject %></td>
+          <td><%= student.marks %></td>
+          <td>
+            <button class="btn btn-info btn-sm edit-student" data-bs-toggle="modal" data-bs-target="#studentModal" data-id="<%= student.id %>">Edit</button>
+            <button class="btn btn-danger btn-sm delete-student" data-id="<%= student.id %>" >Delete</button>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" id="add-student-button" data-bs-toggle="modal" data-bs-target="#studentModal">Add New Student</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="studentModal" tabindex="-1" aria-labelledby="studentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="studentModalLabel">Add/Edit Student</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <%= form_with(model: @student, id: "student-form", local: true) do |form| %>
+            <div class="mb-3">
+                <%= form.label :name, class: "form-label" %>
+                <%= form.text_field 'student[name]', class: "form-control", id: "student-name", required: true %>
+            </div>
+            <div class="mb-3">
+                <%= form.label :subject, class: "form-label" %>
+                <%= form.text_field 'student[subject]', class: "form-control", id: "student-subject", required: true %>
+            </div>
+            <div class="mb-3">
+                <%= form.label :marks, class: "form-label" %>
+                <%= form.number_field 'student[marks]', class: "form-control", id: "student-marks", required: true %>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <%= form.submit "Save", class: "btn btn-primary", id: "save-student" %>
+            </div>
+            <% end %>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>

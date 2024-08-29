@@ -45,7 +45,6 @@ Make sure you have the following installed:
 
 ### Setup Instructions
 
-1. Clone the repository:
    ```bash
    git clone https://github.com/HasrhitSrivastava/teacher-portal.git
    cd teacher-portal
